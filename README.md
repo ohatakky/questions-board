@@ -12,7 +12,8 @@
 
 ## Memo
 - 動的なURLには共通鍵暗号方式を用いる。oauthAPIでreturnされたtokenを暗号化して、ボードへのアクセス時に復号し、Adminのtokenと一致したらtrue
-
+- routingにはechoを使用 (github.com/labstack/echo)
+- social loginはtwitterAPIを使用
 
 ## Architecture
 - Go
