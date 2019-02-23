@@ -1,6 +1,6 @@
 package board
 
-import "questions-board/models"
+import "questions-board/server/models"
 
 type Repository interface {
 	Get(*models.Admin) ([]*models.Board, error)

@@ -2,7 +2,7 @@ package http
 
 import (
 	"net/http"
-	"questions-board/board"
+	"questions-board/server/board"
 
 	"github.com/labstack/echo"
 )
