@@ -5,11 +5,11 @@ module.exports = [
     {
         context: path.join(__dirname, 'client'),
         entry: {
-            app: './app.js'
+            index: './index.js'
         },
         output: {
-            path: path.join(__dirname, 'client/public/javascripts'),
-            filename: '[name].js'
+            path: path.join(__dirname, 'client'),
+            filename: './client.min.js'
         },
         module: {
             rules: [{
@@ -17,12 +17,16 @@ module.exports = [
                 exclude: /node_modules/,
                 loader: 'babel-loader',
                 query: {
-                    presets: ['@babel/react', '@babel/preset-env']
+                    presets: ['@babel/preset-env', '@babel/preset-react']
                 }
             }],
         },
+        resolve:{
+            extensions: ['.js','.json','.jsx']
+        },
         devServer: {
-            contentBase: 'client'
+            contentBase: 'client',
+            historyApiFallback: true // browser-historyを利用している場合のみ必須。
         }
     }
 ]
