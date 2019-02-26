@@ -1,7 +1,8 @@
 # questions-board
 
 ## Overview
-イベント、勉強会等の質疑応答をリアルタイムに処理する
+イベント、勉強会等の質疑応答をリアルタイムに処理する。
+匿名で投稿できるため、初参加の人やシャイな人も積極的に関わることができる。
 
 
 ## Requirements
@@ -11,9 +12,10 @@
 
 
 ## Memo
-- 動的なURLには共通鍵暗号方式を用いる。oauthAPIでreturnされたtokenを暗号化して、ボードへのアクセス時に復号し、Adminのtokenと一致したらtrue
-- routingにはechoを使用 (github.com/labstack/echo)
-- social loginはtwitterAPIを使用
+- serverのroutingにはechoを使用
+- clientのroutingにはreact-routerを使用
+- SocialLoginはfacebookAPIとOAuth2.0で実装
+- 動的なURLには共通鍵暗号方式を用いる。Oauthでreturnされたtokenを暗号化して、ボードへのアクセス時に復号し、Adminのtokenと一致したらtrue
 
 ## Architecture
 - Go
