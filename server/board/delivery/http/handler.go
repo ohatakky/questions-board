@@ -16,9 +16,10 @@ func NewHttpBoardHandler(e *echo.Echo, bu board.Usecase) {
 		BUsecase: bu,
 	}
 
-	e.GET("/boards", handler.getBoards)
-	// e.POST("/boards", handler.storeBoard)
-	// e.Get("/boards/xxx_hash_xxx", handler.getBoard)
+	// hadlerが独立していてもechoのポインタ渡してるからOK。むしろそれがcleanのはず。
+	e.GET("/boards", handler.getBoards) // ボード一覧
+	// e.POST("/boards", handler.storeBoard) // ボード作成
+	// e.Get("/boards/:hash", handler.getBoard) // ボードへアクセス
 }
 
 func (h *HttpBoardHandler) getBoards(c echo.Context) error {
