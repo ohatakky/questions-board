@@ -7,24 +7,17 @@
 
 ## Requirements
 - Realtime : 質疑応答の投稿をリアルタイムに表示できる。
-- Social Login : ログイン権限があり、ログインユーザのみボードを作成できる。
-- Sharable Dynamic URL : 作成したボードは動的なURLによりシェアできる。
+- Sharable URL : 作成したボードは動的なURLによりシェアできる。
 
 
 ## Memo
 - serverのroutingにはechoを使用
 - clientのroutingにはreact-routerを使用
-- SocialLoginはfacebookAPIとOAuth2.0で実装
-- 動的なURLには共通鍵暗号方式を用いる。OAuthでreturnされたtokenを暗号化。ボードへのアクセス時に復号し、Adminのtokenと一致したらtrue
+- ボード生成時にハッシュを発行。URLに付与する。
 
-## Architecture
-- Go
-- Cloud SQL
-- React
-- Redux
 
 ## TODO
-- serverのrouting (OAuth, boardsのCRUD, postsのCRUD)
+- serverのrouting
 - API実装
 - APIモック実装 (json-server)
 - clientの実装 (routing済)
