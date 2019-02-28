@@ -23,8 +23,7 @@ func NewHttpBoardHandler(e *echo.Echo, pu post.Usecase) {
 func (h *HttpPostHandler) postPost(c echo.Context) error {
 	content := c.FormValue("content")
 
-	admin := models.Admin{}
-	board := models.Board{Admin: admin}
+	board := models.Board{}
 	post := models.Post{Board: board, Content: content}
 	h.PUsecase.Store(&post)
 
