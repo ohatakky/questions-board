@@ -15,10 +15,19 @@
 - serverのroutingにはechoを使用
 - clientのroutingにはreact-routerを使用
 - SocialLoginはfacebookAPIとOAuth2.0で実装
-- 動的なURLには共通鍵暗号方式を用いる。Oauthでreturnされたtokenを暗号化して、ボードへのアクセス時に復号し、Adminのtokenと一致したらtrue
+- 動的なURLには共通鍵暗号方式を用いる。OAuthでreturnされたtokenを暗号化。ボードへのアクセス時に復号し、Adminのtokenと一致したらtrue
 
 ## Architecture
 - Go
 - Cloud SQL
 - React
 - Redux
+
+## TODO
+- serverのrouting (OAuth, boardsのCRUD, postsのCRUD)
+- API実装
+- APIモック実装 (json-server)
+- clientの実装 (routing済)
+- repositoryのテスト
+- repository実装
+- デプロイ検討
