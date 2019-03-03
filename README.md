@@ -13,11 +13,10 @@
 ## Memo
 - serverのroutingにはechoを使用
 - clientのroutingにはreact-routerを使用
-- ボード生成時にハッシュを発行。URLに付与する。
+- ボード生成時にハッシュを発行。URLに付与する
 
 
 ## TODO
-- API実装
 - APIモック実装 (json-server)
 - clientの実装 (routing済)
 - repositoryのテスト
