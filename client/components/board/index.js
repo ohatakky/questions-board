@@ -1,8 +1,14 @@
 import React, { Component } from 'react';
 
 class Board extends Component {
+  
+  // TODO : hashがDBにあるかCheck
+
+  // TODO : postsを表示する
+
+  // TODO : postをpostする
+
   constructor(props) {
-    // const hash = this.props.match.params.hash;
     super(props);
     this.state = {
       error: null,
@@ -12,7 +18,7 @@ class Board extends Component {
   }
 
   componentDidMount() {
-    fetch("http://localhost:1234/boards/basvabjv")
+    fetch("http://localhost:1234/boards/" + this.props.match.params.hash)
       .then(res => res.json())
       .then(
         (result) => {
