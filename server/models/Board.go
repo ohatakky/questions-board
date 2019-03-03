@@ -3,9 +3,9 @@ package models
 import "time"
 
 type Board struct {
-	Id        int64
-	Url       string
-	CreatedAt time.Time
-	UpadtedAt time.Time
-	DeletedAt time.Time
+	Id        int64     `json:"id"`
+	Url       string    `json:"url"`
+	CreatedAt time.Time `json:"created_at"`
+	UpadtedAt time.Time `json:"updated_at"`
+	DeletedAt time.Time `json:"deleted_at"`
 }

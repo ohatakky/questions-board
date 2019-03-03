@@ -1,6 +1,7 @@
 package http
 
 import (
+	"log"
 	"net/http"
 	"questions-board/server/board"
 
@@ -16,17 +17,27 @@ func NewHttpBoardHandler(e *echo.Echo, bu board.Usecase) {
 		BUsecase: bu,
 	}
 
-	// hadlerが独立していてもechoのポインタ渡してるからOK。むしろそれがcleanのはず。
-	e.POST("/boards", handler.storeBoard)      // ボード作成
-	e.GET("/boards/:hash", handler.checkBoard) // ボードへアクセス
+	e.POST("/boards", handler.storeBoard)
+	e.GET("/boards/:hash", handler.checkBoard)
 }
 
 func (h *HttpBoardHandler) storeBoard(c echo.Context) error {
 
-	return c.String(http.StatusOK, "store Board")
+	url, err := h.BUsecase.Store()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return c.String(http.StatusOK, url)
 }
 
 func (h *HttpBoardHandler) checkBoard(c echo.Context) error {
 
-	return c.String(http.StatusOK, "check correct board")
+	hash := c.Param("hash")
+	posts, err := h.BUsecase.Check(hash)
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	return c.JSON(http.StatusOK, posts)
 }

@@ -1,7 +1,7 @@
 package models
 
 type Post struct {
-	Id      int64
-	Board   Board
-	Content string
+	Id      int64  `json:"id"`
+	Board   Board  `json:"board"`
+	Content string `json:"content"`
 }
