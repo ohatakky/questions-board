@@ -15,9 +15,10 @@ type boardUsecase struct {
 	postRepo  post.Repository
 }
 
-func NewBoardUsecase(br board.Repository) board.Usecase {
+func NewBoardUsecase(br board.Repository, pr post.Repository) board.Usecase {
 	return &boardUsecase{
 		boardRepo: br,
+		postRepo:  pr,
 	}
 }
 
@@ -29,6 +30,9 @@ func (bu *boardUsecase) Check(url string) ([]*models.Post, error) {
 	}
 
 	posts, err := bu.postRepo.Get(b)
+	if err != nil {
+		log.Fatal(err)
+	}
 
 	return posts, err
 }

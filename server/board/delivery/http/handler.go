@@ -1,6 +1,7 @@
 package http
 
 import (
+	"fmt"
 	"log"
 	"net/http"
 	"questions-board/server/board"
@@ -38,6 +39,8 @@ func (h *HttpBoardHandler) checkBoard(c echo.Context) error {
 	if err != nil {
 		log.Fatal(err)
 	}
+
+	fmt.Println(posts)
 
 	return c.JSON(http.StatusOK, posts)
 }

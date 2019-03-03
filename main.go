@@ -13,9 +13,9 @@ import (
 
 func main() {
 	boardRepo := _boardRepo.NewMockBoardRepository()
-	boardUsecase := _boardUsecase.NewBoardUsecase(boardRepo)
 	postRepo := _postRepo.NewMockPostRepository()
-	postUsecase := _postUsecase.NewPostUsecase(postRepo)
+	boardUsecase := _boardUsecase.NewBoardUsecase(boardRepo, postRepo)
+	postUsecase := _postUsecase.NewPostUsecase(boardRepo, postRepo)
 	e := echo.New()
 	_boardDelivery.NewHttpBoardHandler(e, boardUsecase)
 	_postDelivery.NewHttpPostHandler(e, postUsecase)

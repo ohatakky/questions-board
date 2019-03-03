@@ -12,9 +12,10 @@ type postUsecase struct {
 	postRepo  post.Repository
 }
 
-func NewPostUsecase(pr post.Repository) post.Usecase {
+func NewPostUsecase(br board.Repository, pr post.Repository) post.Usecase {
 	return &postUsecase{
-		postRepo: pr,
+		boardRepo: br,
+		postRepo:  pr,
 	}
 }
 
