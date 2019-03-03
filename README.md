@@ -17,7 +17,8 @@
 
 
 ## TODO
-- clientの実装 (routing済)
+- 各componentの実装
+- clientから非同期にserverのAPIを呼ぶ
 - repositoryのテスト
 - repository実装
 - デプロイ検討
