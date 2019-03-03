@@ -9,6 +9,7 @@ import (
 	_postUsecase "questions-board/server/post/usecase"
 
 	"github.com/labstack/echo"
+	"github.com/labstack/echo/middleware"
 )
 
 func main() {
@@ -17,6 +18,7 @@ func main() {
 	boardUsecase := _boardUsecase.NewBoardUsecase(boardRepo, postRepo)
 	postUsecase := _postUsecase.NewPostUsecase(boardRepo, postRepo)
 	e := echo.New()
+	e.Use(middleware.CORS())
 	_boardDelivery.NewHttpBoardHandler(e, boardUsecase)
 	_postDelivery.NewHttpPostHandler(e, postUsecase)
 	e.Logger.Fatal(e.Start(":1234"))
