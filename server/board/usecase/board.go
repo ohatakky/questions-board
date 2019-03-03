@@ -9,16 +9,16 @@ type boardUsecase struct {
 	boardRepo board.Repository
 }
 
-func NewBoardUsecase(b board.Repository) board.Usecase {
+func NewBoardUsecase(br board.Repository) board.Usecase {
 	return &boardUsecase{
-		boardRepo: b,
+		boardRepo: br,
 	}
 }
 
-func (b *boardUsecase) Check(url string) (*models.Board, error) {
+func (bu *boardUsecase) Check(url string) (*models.Board, error) {
 	return nil, nil
 }
 
-func (b *boardUsecase) Store(*models.Board) error {
-	return nil
+func (bu *boardUsecase) Store(*models.Board) (string, error) {
+	return "", nil
 }
