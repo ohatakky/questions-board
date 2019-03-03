@@ -17,7 +17,6 @@
 
 
 ## TODO
-- APIモック実装 (json-server)
 - clientの実装 (routing済)
 - repositoryのテスト
 - repository実装
