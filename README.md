@@ -17,7 +17,6 @@
 
 
 ## TODO
-- serverのrouting
 - API実装
 - APIモック実装 (json-server)
 - clientの実装 (routing済)

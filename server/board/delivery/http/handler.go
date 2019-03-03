@@ -17,12 +17,16 @@ func NewHttpBoardHandler(e *echo.Echo, bu board.Usecase) {
 	}
 
 	// hadlerが独立していてもechoのポインタ渡してるからOK。むしろそれがcleanのはず。
-	e.GET("/boards", handler.getBoards) // ボード一覧
-	// e.POST("/boards", handler.storeBoard) // ボード作成
-	// e.Get("/boards/:hash", handler.getBoard) // ボードへアクセス
+	e.POST("/boards", handler.storeBoard)      // ボード作成
+	e.GET("/boards/:hash", handler.checkBoard) // ボードへアクセス
 }
 
-func (h *HttpBoardHandler) getBoards(c echo.Context) error {
+func (h *HttpBoardHandler) storeBoard(c echo.Context) error {
 
-	return c.String(http.StatusOK, "return Boards in Admin")
+	return c.String(http.StatusOK, "store Board")
+}
+
+func (h *HttpBoardHandler) checkBoard(c echo.Context) error {
+
+	return c.String(http.StatusOK, "check correct board")
 }
