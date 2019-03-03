@@ -10,7 +10,6 @@ const Routes = () => (
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/boards/:hash' component={Board} />
-            <Route path='/boards' component={Board} />
           </Switch>
         </div>
     </Router>
