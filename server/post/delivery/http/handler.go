@@ -12,7 +12,7 @@ type HttpPostHandler struct {
 	PUsecase post.Usecase
 }
 
-func NewHttpBoardHandler(e *echo.Echo, pu post.Usecase) {
+func NewHttpPostHandler(e *echo.Echo, pu post.Usecase) {
 	handler := &HttpPostHandler{
 		PUsecase: pu,
 	}
