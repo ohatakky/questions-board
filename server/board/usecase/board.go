@@ -1,10 +1,13 @@
 package usecase
 
 import (
+	"crypto/rand"
+	"encoding/binary"
 	"log"
 	"questions-board/server/board"
 	"questions-board/server/models"
 	"questions-board/server/post"
+	"strconv"
 )
 
 type boardUsecase struct {
@@ -32,7 +35,8 @@ func (bu *boardUsecase) Check(url string) ([]*models.Post, error) {
 
 func (bu *boardUsecase) Store() (string, error) {
 
-	board, err := bu.boardRepo.Store()
+	str_random := random()
+	board, err := bu.boardRepo.Store(str_random)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -40,4 +44,10 @@ func (bu *boardUsecase) Store() (string, error) {
 	url := board.Url
 
 	return url, err
+}
+
+func random() string {
+	var n uint64
+	binary.Read(rand.Reader, binary.LittleEndian, &n)
+	return strconv.FormatUint(n, 36)
 }
