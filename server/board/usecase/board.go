@@ -30,6 +30,14 @@ func (bu *boardUsecase) Check(url string) ([]*models.Post, error) {
 	return posts, err
 }
 
-func (bu *boardUsecase) Store(*models.Board) (string, error) {
-	return "", nil
+func (bu *boardUsecase) Store() (string, error) {
+
+	board, err := bu.boardRepo.Store()
+	if err != nil {
+		log.Fatal(err)
+	}
+
+	url := board.Url
+
+	return url, err
 }
