@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { withRouter } from 'react-router';
 
 const board_create = 'http://localhost:1234/boards';
 
@@ -7,16 +8,24 @@ class Home extends Component {
   handleClick(e) {
     e.preventDefault();
     console.log('The link was clicked.');
-    // TODO : ボタン押されたら状態変化。かつAPIを呼ぶ
-    axios.post(board_create)
-    // TODO : APIの返り値(url)のURL → /boards/:hashに遷移する。
+    axios.post(board_create).catch(function (error) {
+      if (error.response) {
+        console.log(error.response)
+      }
+    });
+
+    // TODO : postのreturn(url)を受け取ってredirectさせる。
+
+    this.props.history.push('/boards/aaaaaa')
   }
 
   render() {
     return (
-      <h1 onClick={this.handleClick}>Create</h1>
+      <div>
+        <button onClick={this.handleClick.bind(this)}>Create</button>
+      </div>
     );
   }
 }
 
-export default Home;
+export default withRouter(Home)
