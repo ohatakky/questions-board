@@ -29,6 +29,8 @@ func (h *HttpBoardHandler) storeBoard(c echo.Context) error {
 		log.Fatal(err)
 	}
 
+	fmt.Println("debug : called")
+
 	return c.String(http.StatusOK, url)
 }
 
