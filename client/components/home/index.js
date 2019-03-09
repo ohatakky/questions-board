@@ -4,19 +4,29 @@ import { withRouter } from 'react-router';
 
 const board_create = 'http://localhost:1234/boards';
 
+var create_board = function(callback, t) {
+  axios.post(board_create)
+    .then(function (response) {
+      // handle success
+      callback(response, t)
+    })
+    .catch(function (error) {
+      
+    })
+}
+
+var done = function(response, t) {
+  t.props.history.push(response.data)
+}
+
 class Home extends Component {
+
   handleClick(e) {
     e.preventDefault();
     console.log('The link was clicked.');
-    axios.post(board_create).catch(function (error) {
-      if (error.response) {
-        console.log(error.response)
-      }
-    });
 
-    // TODO : postのreturn(url)を受け取ってredirectさせる。
+    create_board(done, this);
 
-    this.props.history.push('/boards/aaaaaa')
   }
 
   render() {

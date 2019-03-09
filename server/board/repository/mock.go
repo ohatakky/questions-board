@@ -14,7 +14,7 @@ func NewMockBoardRepository() board.Repository {
 
 func (m *mockBoardRepository) Get(url string) (*models.Board, error) {
 	sample := &models.Board{
-		Url: "http://localhost:8080/boards/ndakvbdkalnvdavb",
+		Url: "/boards/ndakvbdkalnvdavb",
 	}
 
 	return sample, nil
@@ -22,7 +22,7 @@ func (m *mockBoardRepository) Get(url string) (*models.Board, error) {
 
 func (m *mockBoardRepository) Store(str_random string) (*models.Board, error) {
 	sample := &models.Board{
-		Url: "http://localhost:8080/boards/ndakvbdkalnvdavb",
+		Url: "/boards/ndakvbdkalnvdavb",
 	}
 
 	return sample, nil
