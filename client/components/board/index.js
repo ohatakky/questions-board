@@ -1,5 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import Input from '../input'
+import Posts from '../posts'
 
 class Board extends Component {
   constructor(props) {
@@ -21,13 +23,13 @@ class Board extends Component {
   render() {
     return (
       <div>
-        {this.state.errorMessage.length > 0 ?
-          (<h2>{this.state.errorMessage}</h2>) :
-          (
-            <h2>cuurent access</h2>
-            // <Input />
-            // <Posts />
-          )}
+        {this.state.errorMessage.length > 0
+        ? (<h2>{this.state.errorMessage}</h2>)
+        : (<div>
+            <Input />
+            <Posts />
+          </div>)
+        }
       </div>
     );
   }
