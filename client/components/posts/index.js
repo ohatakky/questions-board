@@ -1,14 +1,17 @@
 import React, { Component } from 'react';
 import Post from './post'
 
-class Posts extends Component {
-    render() {
-        return (
-          <div>
-            <Post /><Post /><Post />
-          </div>
-        );
-      }
+function Posts(props) {
+    
+    const posts = props.posts.map((post) =>
+        <Post post={post} key={post.id} />
+    );
+
+    return (
+        <div>
+            {posts}
+        </div>
+    );
 }
 
 export default Posts;

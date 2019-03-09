@@ -1,13 +1,10 @@
 import React, { Component } from 'react';
 
-class Post extends Component {
-    render() {
-        return (
-          <div>
-            Post
-          </div>
-        );
-      }
+function Post(props) {
+    console.log(props)
+    return (
+        <p>{props.post.board.id}</p>
+    );
 }
 
 export default Post;
