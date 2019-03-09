@@ -7,17 +7,23 @@ class Board extends Component {
   constructor(props) {
     super(props);
     this.state = {
+      posts: [],
       errorMessage: ""
     };
   }
 
-  componentDidMount() {
+  reload() {
     axios.get("http://localhost:1234/boards/" + this.props.match.params.hash)
     .then(response => {
+      this.setState({ posts: response.data });
     })
     .catch(error => {
       this.setState({ errorMessage: error.response.data.message });
     })
+  }
+
+  componentDidMount() {
+    setInterval(this.reload.bind(this), 3000);
   }
 
   render() {
@@ -27,7 +33,7 @@ class Board extends Component {
         ? (<h2>{this.state.errorMessage}</h2>)
         : (<div>
             <Input />
-            <Posts />
+            <Posts posts={this.state.posts}/>
           </div>)
         }
       </div>
