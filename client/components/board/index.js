@@ -8,14 +8,17 @@ class Board extends Component {
     super(props);
     this.state = {
       posts: [],
-      errorMessage: ""
+      errorMessage: "",
     };
+    this._isMounted = false;
   }
 
   reload() {
     axios.get("http://localhost:1234/boards/" + this.props.match.params.hash)
     .then(response => {
-      this.setState({ posts: response.data });
+      if (this._isMounted) {
+        this.setState({ posts: response.data });
+      }
     })
     .catch(error => {
       this.setState({ errorMessage: error.response.data.message });
@@ -23,7 +26,12 @@ class Board extends Component {
   }
 
   componentDidMount() {
-    setInterval(this.reload.bind(this), 3000);
+    this._isMounted = true;
+    setInterval(this.reload.bind(this), 1000);
+  }
+
+  componentWillUnmount() {
+    this._isMounted = false;
   }
 
   render() {
