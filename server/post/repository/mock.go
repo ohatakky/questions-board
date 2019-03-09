@@ -17,6 +17,7 @@ func (m *mockPostRepository) Get(*models.Board) ([]*models.Post, error) {
 		Url: "http://localhost:8080/boards/ndakvbdkalnvdavb",
 	}
 	sample_post_1 := &models.Post{
+		Id:      1,
 		Board:   sample_board_1,
 		Content: "sample_post_1",
 	}
@@ -24,6 +25,7 @@ func (m *mockPostRepository) Get(*models.Board) ([]*models.Post, error) {
 		Url: "http://localhost:8080/boards/43tngk2g2gn22",
 	}
 	sample_post_2 := &models.Post{
+		Id:      2,
 		Board:   sample_board_2,
 		Content: "sample_post_2",
 	}
