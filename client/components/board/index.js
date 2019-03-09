@@ -1,54 +1,35 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 
 class Board extends Component {
-  
-  // TODO : hashがDBにあるかCheck
-
-  // TODO : postsを表示する
-
-  // TODO : postをpostする
-
   constructor(props) {
     super(props);
     this.state = {
-      error: null,
-      isLoaded: false,
-      items: []
+      errorMessage: ""
     };
   }
 
   componentDidMount() {
-    fetch("http://localhost:1234/boards/" + this.props.match.params.hash)
-      .then(res => res.json())
-      .then(
-        (result) => {
-          this.setState({
-            isLoaded: true,
-            items: result
-          });
-        },
-        (error) => {
-          this.setState({
-            isLoaded: true,
-            error
-          });
-        }
-      )
+    axios.get("http://localhost:1234/boards/" + this.props.match.params.hash)
+    .then(response => {
+    })
+    .catch(error => {
+      this.setState({ errorMessage: error.response.data.message });
+    })
   }
 
   render() {
-    const { error, isLoaded, items } = this.state;
-    if (error) {
-      return <div>Error: {error.message}</div>;
-    } else if (!isLoaded) {
-      return <div>Loading...</div>;
-    } else {
-      return (
-        <div>
-          {items[0].content}
-        </div>
-      );
-    }
+    return (
+      <div>
+        {this.state.errorMessage.length > 0 ?
+          (<h2>{this.state.errorMessage}</h2>) :
+          (
+            <h2>cuurent access</h2>
+            // <Input />
+            // <Posts />
+          )}
+      </div>
+    );
   }
 }
 

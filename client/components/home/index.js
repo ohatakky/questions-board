@@ -16,6 +16,7 @@ var create_board = function(callback, t) {
 }
 
 var done = function(response, t) {
+  // console.log(response)
   t.props.history.push(response.data)
 }
 
