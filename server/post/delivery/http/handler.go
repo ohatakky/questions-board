@@ -21,11 +21,11 @@ func NewHttpPostHandler(e *echo.Echo, pu post.Usecase) {
 }
 
 func (h *HttpPostHandler) postPost(c echo.Context) error {
-	content := c.FormValue("content")
+	content := c.QueryParam("content")
 
 	board := models.Board{}
 	post := models.Post{Board: board, Content: content}
 	h.PUsecase.Store(&post)
 
-	return c.String(http.StatusOK, "post Post")
+	return c.String(http.StatusOK, content)
 }

@@ -40,7 +40,7 @@ class Board extends Component {
         {this.state.errorMessage.length > 0
         ? (<h2>{this.state.errorMessage}</h2>)
         : (<div>
-            <Input />
+            <Input url={this.props.match.params.hash}/>
             <Posts posts={this.state.posts}/>
           </div>)
         }
