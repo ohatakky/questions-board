@@ -4,9 +4,9 @@ import (
 	"crypto/rand"
 	"encoding/binary"
 	"log"
-	"questions-board/server/board"
-	"questions-board/server/models"
-	"questions-board/server/post"
+	"server/board"
+	"server/models"
+	"server/post"
 	"strconv"
 )
 

@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"questions-board/server/models"
-	"questions-board/server/post"
+	"server/models"
+	"server/post"
 )
 
 type mockPostRepository struct {

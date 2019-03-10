@@ -1,6 +1,6 @@
 package post
 
-import "questions-board/server/models"
+import "server/models"
 
 type Repository interface {
 	Get(*models.Board) ([]*models.Post, error)

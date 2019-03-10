@@ -4,7 +4,7 @@ import (
 	"fmt"
 	"log"
 	"net/http"
-	"questions-board/server/board"
+	"server/board"
 
 	"github.com/labstack/echo"
 )

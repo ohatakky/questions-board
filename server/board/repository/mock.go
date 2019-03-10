@@ -1,8 +1,8 @@
 package repository
 
 import (
-	"questions-board/server/board"
-	"questions-board/server/models"
+	"server/board"
+	"server/models"
 )
 
 type mockBoardRepository struct {
