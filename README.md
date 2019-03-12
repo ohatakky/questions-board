@@ -13,11 +13,9 @@
 ## Memo
 - serverのroutingにはechoを使用
 - clientのroutingにはreact-routerを使用
-- ボード生成時にハッシュを発行。URLに付与する
+- ボード登録時にハッシュを生成
 
 
 ## TODO
-- 各componentの実装
-- repositoryのテスト
-- repository実装
-- デプロイ検討
+- 直接URL叩いた場合もhash取る
+- postしたタイミングでpostした自信の画面には表示する
