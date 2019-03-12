@@ -1,6 +1,10 @@
 package main
 
 import (
+	"database/sql"
+	"fmt"
+	"os"
+	"path/filepath"
 	_boardDelivery "questions-board/server/board/delivery/http"
 	_boardRepo "questions-board/server/board/repository"
 	_boardUsecase "questions-board/server/board/usecase"
@@ -8,12 +12,33 @@ import (
 	_postRepo "questions-board/server/post/repository"
 	_postUsecase "questions-board/server/post/usecase"
 
+	_ "github.com/go-sql-driver/mysql"
+	"github.com/joho/godotenv"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 )
 
+func init() {
+	abs_path, _ := filepath.Abs(".")
+
+	godotenv.Load(fmt.Sprintf("%s/.env", abs_path))
+}
+
 func main() {
-	boardRepo := _boardRepo.NewMockBoardRepository()
+	dbUser := os.Getenv("dbUser")
+	dbPass := os.Getenv("dbPass")
+	dbName := os.Getenv("dbName")
+	dbHost := os.Getenv("dbHost")
+	connection := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s", dbUser, dbPass, dbHost, dbName)
+
+	db, err := sql.Open(`mysql`, connection)
+	if err != nil {
+		panic(err.Error())
+	}
+	defer db.Close()
+
+	// boardRepo := _boardRepo.NewMockBoardRepository()
+	boardRepo := _boardRepo.NewMysqlBoardRepository(db)
 	postRepo := _postRepo.NewMockPostRepository()
 	boardUsecase := _boardUsecase.NewBoardUsecase(boardRepo, postRepo)
 	postUsecase := _postUsecase.NewPostUsecase(boardRepo, postRepo)
