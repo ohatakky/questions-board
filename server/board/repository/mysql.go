@@ -17,21 +17,22 @@ func NewMysqlBoardRepository(Conn *sql.DB) board.Repository {
 }
 
 func (m *mysqlBoardRepository) Get(url string) (*models.Board, error) {
-	query := fmt.Sprintf("SELECT Url FROM board WHERE url = '%s'", url)
+	query := fmt.Sprintf("SELECT id, url FROM board WHERE url = '%s'", url)
 	rows, err := m.Conn.Query(query)
 	if err != nil {
 		log.Fatal(err.Error())
 	}
+	defer rows.Close()
 
 	var b = models.Board{}
 	for rows.Next() {
-		err = rows.Scan(&b.Url)
+		err = rows.Scan(&b.Id, &b.Url)
 		if err != nil {
 			log.Fatal(err.Error())
 		}
 	}
 
-	return &b, nil
+	return &b, err
 }
 
 func (m *mysqlBoardRepository) Store(str_random string) (*models.Board, error) {
