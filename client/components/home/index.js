@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router';
 
-const board_create = 'http://localhost:1234/boards';
+const board_create = 'https://questions-board.appspot.com/boards';
 
 var create_board = function(callback, t) {
   axios.post(board_create)

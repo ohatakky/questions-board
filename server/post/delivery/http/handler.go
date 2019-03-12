@@ -2,8 +2,8 @@ package http
 
 import (
 	"net/http"
-	"server/models"
-	"server/post"
+	"questions-board/server/models"
+	"questions-board/server/post"
 
 	"github.com/labstack/echo"
 )

@@ -14,7 +14,7 @@ class Board extends Component {
   }
 
   reload() {
-    axios.get("http://localhost:1234/boards/" + this.props.match.params.hash)
+    axios.get("https://questions-board.appspot.com/boards/" + this.props.match.params.hash)
     .then(response => {
       if (this._isMounted) {
         this.setState({ posts: response.data });

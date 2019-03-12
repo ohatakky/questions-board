@@ -1,6 +1,6 @@
 package post
 
-import "server/models"
+import "questions-board/server/models"
 
 type Usecase interface {
 	Store(*models.Post) error

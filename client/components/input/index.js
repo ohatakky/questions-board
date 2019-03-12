@@ -16,7 +16,7 @@ class Input extends Component {
 
   handleSubmit(event) {
     // TODO : post API 叩く
-    axios.post("http://localhost:1234/boards/" + this.props.url, null, {params: {
+    axios.post("https://questions-board.appspot.com/boards/" + this.props.url, null, {params: {
       content: this.state.value
     }})
     .then(function (response) {
