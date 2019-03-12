@@ -19,7 +19,7 @@ class Input extends Component {
       content: this.state.value
     }})
     .then(function (response) {
-      console.log(response)
+      console.log("postPost")
     })
     .catch(function (error) {
       

@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
 
 function Post(props) {
-    console.log(props)
+    console.log("post content")
     return (
-        <p>{props.post.board.id}</p>
+        <p>{props.post.content}</p>
     );
 }
 

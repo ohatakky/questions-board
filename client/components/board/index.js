@@ -14,6 +14,7 @@ class Board extends Component {
   }
 
   reload() {
+    // TODO : 直接URL叩いたときにhash取れていない
     axios.get("https://questions-board.appspot.com/boards/" + this.props.match.params.hash)
     .then(response => {
       if (this._isMounted) {
@@ -27,7 +28,7 @@ class Board extends Component {
 
   componentDidMount() {
     this._isMounted = true;
-    setInterval(this.reload.bind(this), 1000);
+    setInterval(this.reload.bind(this), 6000);
   }
 
   componentWillUnmount() {
