@@ -38,7 +38,7 @@ func main() {
 		log.Fatal(err.Error())
 	}
 	defer db.Close()
-	db.SetConnMaxLifetime(time.Second * 5)
+	db.SetConnMaxLifetime(time.Second * 20)
 	db.SetMaxIdleConns(0)
 	db.SetMaxOpenConns(150)
 
