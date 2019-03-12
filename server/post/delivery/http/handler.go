@@ -1,6 +1,7 @@
 package http
 
 import (
+	"log"
 	"net/http"
 	"questions-board/server/models"
 	"questions-board/server/post"
@@ -21,11 +22,15 @@ func NewHttpPostHandler(e *echo.Echo, pu post.Usecase) {
 }
 
 func (h *HttpPostHandler) postPost(c echo.Context) error {
+	hash := c.Param("hash")
 	content := c.QueryParam("content")
 
-	board := models.Board{}
+	board := models.Board{Url: hash}
 	post := models.Post{Board: board, Content: content}
-	h.PUsecase.Store(&post)
+	err := h.PUsecase.Store(&post)
+	if err != nil {
+		log.Fatal(err)
+	}
 
-	return c.String(http.StatusOK, content)
+	return c.String(http.StatusOK, "stored")
 }
