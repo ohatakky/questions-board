@@ -25,13 +25,13 @@ func NewBoardUsecase(br board.Repository, pr post.Repository) board.Usecase {
 func (bu *boardUsecase) Check(url string) ([]*models.Post, error) {
 
 	b, err := bu.boardRepo.Get(url)
-	if err != nil {
-		log.Fatal(err)
+	if err != nil || b.Id == 0 {
+		return nil, err
 	}
 
 	posts, err := bu.postRepo.Get(b)
 	if err != nil {
-		log.Fatal(err)
+		return nil, err
 	}
 
 	return posts, err
