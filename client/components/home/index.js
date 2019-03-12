@@ -7,7 +7,6 @@ const board_create = 'https://questions-board.appspot.com/boards';
 var create_board = function(callback, t) {
   axios.post(board_create)
     .then(function (response) {
-      // handle success
       callback(response, t)
     })
     .catch(function (error) {
@@ -16,18 +15,15 @@ var create_board = function(callback, t) {
 }
 
 var done = function(response, t) {
-  // console.log(response)
-  t.props.history.push(response.data)
+  t.props.history.push('boards/' + response.data)
 }
 
 class Home extends Component {
 
   handleClick(e) {
     e.preventDefault();
-    console.log('The link was clicked.');
 
     create_board(done, this);
-
   }
 
   render() {
