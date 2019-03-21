@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"log"
 	"os"
-	"path/filepath"
 	_boardDelivery "questions-board/server/board/delivery/http"
 	_boardRepo "questions-board/server/board/repository"
 	_boardUsecase "questions-board/server/board/usecase"
@@ -15,16 +14,15 @@ import (
 	"time"
 
 	_ "github.com/go-sql-driver/mysql"
-	"github.com/joho/godotenv"
 	"github.com/labstack/echo"
 	"github.com/labstack/echo/middleware"
 )
 
-func init() {
-	abs_path, _ := filepath.Abs(".")
+// func init() {
+// 	abs_path, _ := filepath.Abs(".")
 
-	godotenv.Load(fmt.Sprintf("%s/.env", abs_path))
-}
+// 	godotenv.Load(fmt.Sprintf("%s/.env", abs_path))
+// }
 
 func main() {
 	dbUser := os.Getenv("dbUser")
