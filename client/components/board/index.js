@@ -14,20 +14,22 @@ class Board extends Component {
   }
 
   reload() {
-    // TODO : 直接URL叩いたときにhash取れていない
-    axios.get("https://questions-board.appspot.com/boards/" + this.props.match.params.hash)
+    axios.get("https://questions-board.appspot.com/boards/" + location.pathname.split('/')[2])
     .then(response => {
       if (this._isMounted) {
+        console.log(response);
         this.setState({ posts: response.data });
       }
     })
     .catch(error => {
+      console.log(error);
       this.setState({ errorMessage: error.response.data.message });
     })
   }
 
   componentDidMount() {
     this._isMounted = true;
+    this.reload.bind(this);
     setInterval(this.reload.bind(this), 6000);
   }
 
@@ -41,7 +43,8 @@ class Board extends Component {
         {this.state.errorMessage.length > 0
         ? (<h2>{this.state.errorMessage}</h2>)
         : (<div>
-            <Input url={this.props.match.params.hash}/>
+            {/* <Input url={this.props.match.params.hash}/> */}
+            <Input url={"https://questions-board.appspot.com/boards/" + location.pathname.split('/')[2]}/>
             <Posts posts={this.state.posts}/>
           </div>)
         }

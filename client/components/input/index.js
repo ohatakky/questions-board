@@ -16,14 +16,14 @@ class Input extends Component {
 
   handleSubmit(event) {
     // TODO : postしたタイミングでpostした自信の画面には表示する
-    axios.post("https://questions-board.appspot.com/boards/" + this.props.url, null, {params: {
+    axios.post(this.props.url, null, {params: {
       content: this.state.value
     }})
     .then(function (response) {
-      console.log("postPost")
+      console.log(response);
     })
     .catch(function (error) {
-      
+      console.log(error);
     })
     event.preventDefault();
   }
