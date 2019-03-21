@@ -8,7 +8,7 @@ module.exports = [
             index: './index.js'
         },
         output: {
-            path: path.join(__dirname, 'client'),
+            path: path.join(__dirname, 'client/public/js'),
             filename: './client.min.js'
         },
         module: {
