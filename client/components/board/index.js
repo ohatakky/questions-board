@@ -13,6 +13,10 @@ class Board extends Component {
     this._isMounted = false;
   }
 
+  inputPosts(input_posts) {
+    this.setState({ posts: input_posts });
+  }
+
   reload() {
     axios.get("https://questions-board.appspot.com/boards/" + location.pathname.split('/')[2])
     .then(response => {
@@ -37,6 +41,9 @@ class Board extends Component {
     this._isMounted = false;
   }
 
+  // Reactがrenderするのは以下の2つのタイミングだけ
+  // stateを更新する
+  // 外部からpropsを受け取る
   render() {
     return (
       <div>
@@ -44,7 +51,7 @@ class Board extends Component {
         ? (<h2>{this.state.errorMessage}</h2>)
         : (<div>
             {/* <Input url={this.props.match.params.hash}/> */}
-            <Input url={"https://questions-board.appspot.com/boards/" + location.pathname.split('/')[2]}/>
+            <Input url={"https://questions-board.appspot.com/boards/" + location.pathname.split('/')[2]} inputPosts={this.inputPosts.bind(this)}/>
             <Posts posts={this.state.posts}/>
           </div>)
         }

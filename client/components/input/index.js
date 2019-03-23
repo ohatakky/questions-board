@@ -1,6 +1,24 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+
+var callback_input = function(response, t) {
+  t.props.inputPosts(response.data);
+}
+
+var post_input = function(callback, t) {
+  axios.post(t.props.url, null, {params: {
+    content: t.state.value
+  }})
+  .then(function (response) {
+    console.log(response);
+    callback(response, t);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+}
+
 class Input extends Component {
   constructor(props) {
     super(props);
@@ -15,17 +33,9 @@ class Input extends Component {
   }
 
   handleSubmit(event) {
-    // TODO : postしたタイミングでpostした自信の画面には表示する
-    axios.post(this.props.url, null, {params: {
-      content: this.state.value
-    }})
-    .then(function (response) {
-      console.log(response);
-    })
-    .catch(function (error) {
-      console.log(error);
-    })
     event.preventDefault();
+
+    post_input(callback_input, this);
   }
 
   render() {
