@@ -6,12 +6,10 @@ import Board from './components/board'
 
 const Routes = () => (
     <Router>
-        <div>
           <Switch>
             <Route exact path='/' component={Home} />
             <Route path='/board/:hash' component={Board} />
           </Switch>
-        </div>
     </Router>
   );
   
