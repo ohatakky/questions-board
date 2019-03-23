@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import Input from '../input'
+import InputPost from '../input'
 import Posts from '../posts'
 
 class Board extends Component {
@@ -52,7 +52,7 @@ class Board extends Component {
         ? (<h2>{this.state.errorMessage}</h2>)
         : (<div>
             {/* <Input url={this.props.match.params.hash}/> */}
-            <Input url={"https://questions-board.appspot.com/boards/" + location.pathname.split('/')[2]} inputPosts={this.inputPosts.bind(this)}/>
+            <InputPost url={"https://questions-board.appspot.com/boards/" + location.pathname.split('/')[2]} inputPosts={this.inputPosts.bind(this)}/>
             <Posts posts={this.state.posts}/>
           </div>)
         }

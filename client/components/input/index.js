@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-
+import Button from '@material-ui/core/Button';
+import TextField from '@material-ui/core/TextField';
+import * as colors from '@material-ui/core/colors';
 
 var callback_input = function(response, t) {
   t.props.inputPosts(response.data);
@@ -17,7 +19,7 @@ var post_input = function(callback, t) {
   })
 }
 
-class Input extends Component {
+class InputPost extends Component {
   constructor(props) {
     super(props);
     this.state = {value: ''};
@@ -38,15 +40,28 @@ class Input extends Component {
 
   render() {
       return (
-        <form onSubmit={this.handleSubmit}>
-          <label>
-            input:
-            <input type="text" value={this.state.value} onChange={this.handleChange} />
-          </label>
-          <input type="submit" value="Submit" />
+          <form onSubmit={this.handleSubmit} style={{padding: "20px"}}>
+            <TextField
+              label="Input"
+              defaultValue="Input"
+              inputProps={{
+                'aria-label': 'Description',
+              }}
+              onChange={this.handleChange}
+              value={this.state.value}
+              type="text"
+              variant="outlined"
+              style={{minHeight: "32px", minWidth: "200px", padding: "4px", marginRight: "20px"}}
+            />
+            <Button
+              type="submit"
+              style={{backgroundColor: colors.red[200], color: colors.grey[50], minHeight: "32px", minWidth: "100px"}}
+              variant="contained">
+              Submit
+            </Button>
         </form>
       );
     }
 }
 
-export default Input;
+export default InputPost;
