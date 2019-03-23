@@ -29,7 +29,7 @@ func main() {
 	dbPass := os.Getenv("dbPass")
 	dbName := os.Getenv("dbName")
 	dbHost := os.Getenv("dbHost")
-	connection := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s", dbUser, dbPass, dbHost, dbName)
+	connection := fmt.Sprintf("%s:%s@tcp(%s:3306)/%s?charset=utf8", dbUser, dbPass, dbHost, dbName)
 
 	db, err := sql.Open(`mysql`, connection)
 	if err != nil {
