@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { withRouter } from 'react-router';
+import Button from '@material-ui/core/Button';
+import Grid from '@material-ui/core/Grid';
+import * as colors from '@material-ui/core/colors';
 
 const board_create = 'https://questions-board.appspot.com/boards';
 
@@ -28,9 +31,9 @@ class Home extends Component {
 
   render() {
     return (
-      <div>
-        <button onClick={this.handleClick.bind(this)}>Create</button>
-      </div>
+      <Grid container justify="center" alignItems="center" style={{minHeight: '600px'}}>
+        <Button style={{backgroundColor: colors.lightBlue[400], color: colors.grey[50]}} variant="contained" onClick={this.handleClick.bind(this)}>Create</Button>
+      </Grid>
     );
   }
 }
