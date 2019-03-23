@@ -10,12 +10,11 @@ var create_board = function(callback, t) {
       callback(response, t)
     })
     .catch(function (error) {
-      console.log(error);
+      
     })
 }
 
 var done = function(response, t) {
-  console.log(response)
   t.props.history.push('board/' + response.data)
 }
 

@@ -21,19 +21,20 @@ class Board extends Component {
     axios.get("https://questions-board.appspot.com/boards/" + location.pathname.split('/')[2])
     .then(response => {
       if (this._isMounted) {
-        console.log(response);
         this.setState({ posts: response.data });
       }
     })
     .catch(error => {
-      console.log(error);
       this.setState({ errorMessage: error.response.data.message });
     })
+  }
+  componentWillMount() {
+    this._isMounted = true;
+    this.reload();
   }
 
   componentDidMount() {
     this._isMounted = true;
-    this.reload.bind(this);
     setInterval(this.reload.bind(this), 6000);
   }
 

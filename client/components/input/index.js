@@ -11,11 +11,9 @@ var post_input = function(callback, t) {
     content: t.state.value
   }})
   .then(function (response) {
-    console.log(response);
     callback(response, t);
   })
   .catch(function (error) {
-    console.log(error);
   })
 }
 
