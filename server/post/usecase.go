@@ -3,5 +3,5 @@ package post
 import "questions-board/server/models"
 
 type Usecase interface {
-	Store(*models.Post) error
+	Store(*models.Post) ([]*models.Post, error)
 }

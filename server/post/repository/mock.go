@@ -34,7 +34,7 @@ func (m *mockPostRepository) Get(*models.Board) ([]*models.Post, error) {
 	return sample, nil
 }
 
-func (m *mockPostRepository) Store(*models.Post) error {
+func (m *mockPostRepository) Store(*models.Post) ([]*models.Post, error) {
 
-	return nil
+	return nil, nil
 }

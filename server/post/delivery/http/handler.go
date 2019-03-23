@@ -27,10 +27,10 @@ func (h *HttpPostHandler) postPost(c echo.Context) error {
 
 	board := models.Board{Url: hash}
 	post := models.Post{Board: board, Content: content}
-	err := h.PUsecase.Store(&post)
+	posts, err := h.PUsecase.Store(&post)
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	return c.String(http.StatusOK, "stored")
+	return c.JSON(http.StatusOK, posts)
 }

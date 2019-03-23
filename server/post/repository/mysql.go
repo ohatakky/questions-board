@@ -38,12 +38,17 @@ func (m *mysqlPostRepository) Get(b *models.Board) ([]*models.Post, error) {
 	return res, nil
 }
 
-func (m *mysqlPostRepository) Store(p *models.Post) error {
+func (m *mysqlPostRepository) Store(p *models.Post) ([]*models.Post, error) {
 	query := fmt.Sprintf("INSERT INTO post (board_id, content) VALUES(%d, '%s')", p.Board.Id, p.Content)
 	_, err := m.Conn.Exec(query)
 	if err != nil {
 		log.Fatal(err.Error())
 	}
 
-	return err
+	posts, err := m.Get(&p.Board)
+	if err != nil {
+		log.Fatal(err.Error())
+	}
+
+	return posts, err
 }
