@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import Post from './post'
+import Post from './post';
+import List from '@material-ui/core/List';
 
 function Posts(props) {
     const posts = props.posts.map((post) =>
@@ -9,9 +10,9 @@ function Posts(props) {
     const rev_posts = posts.slice().reverse();
 
     return (
-        <div>
+        <List>
             {rev_posts}
-        </div>
+        </List>
     );
 }
 

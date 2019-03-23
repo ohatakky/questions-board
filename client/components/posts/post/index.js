@@ -1,8 +1,12 @@
 import React, { Component } from 'react';
+import ListItem from '@material-ui/core/ListItem';
+import ListItemText from '@material-ui/core/ListItemText';
 
 function Post(props) {
     return (
-        <p>{props.post.content}</p>
+        <ListItem button>
+          <ListItemText primary={props.post.content} />
+        </ListItem>
     );
 }
 
