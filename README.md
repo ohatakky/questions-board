@@ -6,16 +6,5 @@
 
 
 ## Requirements
-- Realtime : 質疑応答の投稿をリアルタイムに表示できる。
-- Sharable URL : 作成したボードは動的なURLによりシェアできる。
-
-
-## Memo
-- serverのroutingにはechoを使用
-- clientのroutingにはreact-routerを使用
-- ボード登録時にハッシュを生成
-
-
-## TODO
-- 直接URL叩いた場合もhash取る
-- postしたタイミングでpostした自信の画面には表示する
+- 質疑応答の投稿をリアルタイムに表示できる。
+- 作成したボードは動的なURLによりシェアできる
