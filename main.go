@@ -4,6 +4,7 @@ import (
 	"database/sql"
 	"fmt"
 	"log"
+	"net/http"
 	"os"
 	_boardDelivery "questions-board/server/board/delivery/http"
 	_boardRepo "questions-board/server/board/repository"
@@ -48,5 +49,14 @@ func main() {
 	e.Use(middleware.CORS())
 	_boardDelivery.NewHttpBoardHandler(e, boardUsecase)
 	_postDelivery.NewHttpPostHandler(e, postUsecase)
+	e.HTTPErrorHandler = func(err error, c echo.Context) {
+		if he, ok := err.(*echo.HTTPError); ok {
+			if he.Code == 404 {
+				c.HTML(http.StatusNotFound, "<strong>404</strong>")
+			} else {
+				c.HTML(http.StatusInternalServerError, "<strong>500</strong>")
+			}
+		}
+	}
 	e.Logger.Fatal(e.Start(":8080"))
 }
