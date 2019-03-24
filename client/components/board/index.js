@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import InputPost from '../input'
 import Posts from '../posts'
+import Typography from '@material-ui/core/Typography';
 
 class Board extends Component {
   constructor(props) {
@@ -25,7 +26,9 @@ class Board extends Component {
       }
     })
     .catch(error => {
-      this.setState({ errorMessage: error.response.data.message });
+      if(error.response.status == 400){
+        this.setState({ errorMessage: "URLが正しくありません。" });
+      }
     })
   }
   componentWillMount() {
@@ -49,9 +52,8 @@ class Board extends Component {
     return (
       <div>
         {this.state.errorMessage.length > 0
-        ? (<h2>{this.state.errorMessage}</h2>)
+        ? (<Typography variant="subheading" style={{padding: "8px"}}>{this.state.errorMessage}</Typography>)
         : (<div>
-            {/* <Input url={this.props.match.params.hash}/> */}
             <InputPost url={"https://questions-board.appspot.com/boards/" + location.pathname.split('/')[2]} inputPosts={this.inputPosts.bind(this)}/>
             <Posts posts={this.state.posts}/>
           </div>)

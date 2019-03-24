@@ -20,7 +20,7 @@ func (m *mysqlBoardRepository) Get(url string) (*models.Board, error) {
 	query := fmt.Sprintf("SELECT id, url FROM board WHERE url = '%s'", url)
 	rows, err := m.Conn.Query(query)
 	if err != nil {
-		log.Fatal(err.Error())
+		return nil, err
 	}
 	defer rows.Close()
 
@@ -28,7 +28,7 @@ func (m *mysqlBoardRepository) Get(url string) (*models.Board, error) {
 	for rows.Next() {
 		err = rows.Scan(&b.Id, &b.Url)
 		if err != nil {
-			log.Fatal(err.Error())
+			return nil, err
 		}
 	}
 
