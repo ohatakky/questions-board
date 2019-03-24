@@ -31,9 +31,9 @@ class Home extends Component {
 
   render() {
     return (
-      <Grid container justify="center" alignItems="center" style={{minHeight: '600px'}}>
+      <Grid container justify="center" alignItems="center" style={{minHeight: '560px'}}>
         <Button
-          style={{backgroundColor: colors.lightBlue[400], color: colors.grey[50]}}
+          style={{backgroundColor: colors.lightBlue[400], color: colors.grey[50], minHeight: "48px", minWidth: "120px"}}
           variant="contained"
           onClick={this.handleClick.bind(this)}>
           Create

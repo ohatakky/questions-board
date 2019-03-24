@@ -15,8 +15,7 @@ var post_input = function(callback, t) {
   .then(function (response) {
     callback(response, t);
   })
-  .catch(function (error) {
-  })
+  .catch(function (error) {})
 }
 
 class InputPost extends Component {
@@ -51,11 +50,11 @@ class InputPost extends Component {
               value={this.state.value}
               type="text"
               variant="outlined"
-              style={{minHeight: "32px", minWidth: "200px", padding: "4px", marginRight: "20px"}}
+              style={{minHeight: "32px", minWidth: "200px", marginRight: "24px"}}
             />
             <Button
               type="submit"
-              style={{backgroundColor: colors.red[200], color: colors.grey[50], minHeight: "32px", minWidth: "100px"}}
+              style={{backgroundColor: colors.red[200], color: colors.grey[50], minHeight: "32px", minWidth: "96px"}}
               variant="contained">
               Submit
             </Button>
